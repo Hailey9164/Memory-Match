@@ -52,7 +52,7 @@ Work top to bottom: each phase depends on the one before it. When a task is done
 
 - [x] Create the project and push it to the shared GitHub repo (initials: HC)
 - [ ] Turn the UI sketches into wireframes for the menu, board, and win screen (initials: ___)
-- [ ] Create card designs: face down, face up, and matched (initials: ___)
+- [X] Create card designs: face down, face up, and matched (initials: HC)
 
 ### Phase 2: Game logic
 
