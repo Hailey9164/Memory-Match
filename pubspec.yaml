@@ -1,5 +1,7 @@
 name: memorymatch
-description: "A new Flutter project."
+description: "A mobile memory match game 
+with three difficulty levels, a timer-based 
+score, and a move counter."
 
 publish_to: 'none'
 version: 0.0.0
