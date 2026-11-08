@@ -15,6 +15,9 @@ dependencies:
     sdk: flutter
   flame: ^1.38.2
 
-
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/cardThemes/
 
 
