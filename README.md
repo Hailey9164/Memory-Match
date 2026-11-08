@@ -50,4 +50,5 @@ Built by team **Memory Match** for our mobile app development class.
 - [ ] Timer, score, and move counter
 - [ ] Win screen
 - [ ] Testing and polish
+
   Ideas for later: saved best scores, a pause button, and selectable card themes.
