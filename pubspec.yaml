@@ -19,5 +19,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/cardThemes/
-
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
 
