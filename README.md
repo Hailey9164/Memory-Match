@@ -57,8 +57,8 @@ Work top to bottom: each phase depends on the one before it. When a task is done
 ### Phase 2: Game logic
 
 - [X] Build the card model (pair ID, and state: face down, face up, or matched) (initials: HC)
-- [ ] Find the shuffle from the Klondike project and adapt it to shuffle a list of cards (initials: ___)
-- [ ] Write the deck builder: given a grid size, create the pairs and shuffle them (initials: ___)
+- [X] Find the shuffle from the Klondike project and adapt it to shuffle a list of cards (initials: HC)
+- [X] Write the deck builder: given a grid size, create the pairs and shuffle them (initials: HC)
 - [ ] Add flip logic: a tapped card turns face up, and only two can be face up at a time (initials: ___)
 - [ ] Add match logic: a matching pair stays face up, and a mismatch flips back after a short pause (initials: ___)
 - [ ] Lock taps while two cards are being compared (initials: ___)
