@@ -59,11 +59,11 @@ Work top to bottom: each phase depends on the one before it. When a task is done
 - [X] Build the card model (pair ID, and state: face down, face up, or matched) (initials: HC)
 - [X] Find the shuffle from the Klondike project and adapt it to shuffle a list of cards (initials: HC)
 - [X] Write the deck builder: given a grid size, create the pairs and shuffle them (initials: HC)
-- [ ] Add flip logic: a tapped card turns face up, and only two can be face up at a time (initials: ___)
-- [ ] Add match logic: a matching pair stays face up, and a mismatch flips back after a short pause (initials: ___)
-- [ ] Lock taps while two cards are being compared (initials: ___)
-- [ ] Add the move counter (two flips = one move) (initials: ___)
-- [ ] Add win detection (every pair matched) (initials: ___)
+- [X] Add flip logic: a tapped card turns face up, and only two can be face up at a time (initials: HC)
+- [X] Add match logic: a matching pair stays face up, and a mismatch flips back after a short pause (initials: HC)
+- [X] Lock taps while two cards are being compared (initials: HC)
+- [X] Add the move counter (two flips = one move) (initials: HC)
+- [X] Add win detection (every pair matched) (initials: HC)
 
 ### Phase 3: Game board screen
 
