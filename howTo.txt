@@ -1,0 +1,51 @@
+This is how to run the code on an emulator
+For this, I downloaded and used Android Studio
+
+Once downloaded and on the welcome screen, go to 
+
+More Actions -> SDK Manager
+
+and install the latest Android SDK 
+(as of 11/18/26 it was Android 17.0 "CinnamonBun" with API Level 37.0)
+(I also had Android 16.0 "Baklava" API 36.0, but it's not the most recent)
+Then go to SDK Tools and select
+
+-Android SDK Build-Tools
+-Android SDK Command-line Tools
+-Android emulator
+-Android SDK Platform-Tools
+-NDK (side by side) ver 28.2.13676358
+
+Once selected, press "Apply"
+
+To check if VS code recognizes it, run in the terminal
+
+flutter doctor --android-licenses
+flutter doctor      
+
+Android toolchain should be detected
+
+To begin the android emulator, in Android Studio, select
+
+More Actions -> Virtual Device Manager
+
+You can create a new device (I chose Medium_Phone), 
+press next, then finish
+You can now press the play button on for the phone you chose
+Do so, and wait for the emulator to reach a page that looks like a 
+regular phone's home page
+
+Then in the VS code terminal type
+
+flutter devices     (the phone you chose should show up here)
+
+flutter emulators
+THEN 
+flutter run
+
+You can also "connect" to the emulator using
+flutter emulators --launch (emulator_id)
+The emulator_id for my case was "Medium_Phone"
+
+If changes to the code are made, type "r" into the terminal 
+for a hot reload
