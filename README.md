@@ -67,10 +67,10 @@ Work top to bottom: each phase depends on the one before it. When a task is done
 
 ### Phase 3: Game board screen
 
-- [ ] Lay out the card grid so it fits the screen for any grid size (initials: ___)
-- [ ] Show the three card looks: face down, face up, and matched (initials: ___)
-- [ ] Connect the board to the game logic so taps flip real cards (initials: ___)
-- [ ] Milestone: a full Medium (4 × 4) game can be played to the end (initials: ___)
+- [X] Lay out the card grid so it fits the screen for any grid size (initials: AB)
+- [X] Show the three card looks: face down, face up, and matched (initials: AB)
+- [X] Connect the board to the game logic so taps flip real cards (initials: AB)
+- [X] Milestone: a full Medium (4 × 4) game can be played to the end (initials: AB)
 
 ### Phase 4: Difficulty and navigation
 
