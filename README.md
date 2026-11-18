@@ -59,18 +59,18 @@ Work top to bottom: each phase depends on the one before it. When a task is done
 - [X] Build the card model (pair ID, and state: face down, face up, or matched) (initials: HC)
 - [X] Find the shuffle from the Klondike project and adapt it to shuffle a list of cards (initials: HC)
 - [X] Write the deck builder: given a grid size, create the pairs and shuffle them (initials: HC)
-- [ ] Add flip logic: a tapped card turns face up, and only two can be face up at a time (initials: ___)
-- [ ] Add match logic: a matching pair stays face up, and a mismatch flips back after a short pause (initials: ___)
-- [ ] Lock taps while two cards are being compared (initials: ___)
-- [ ] Add the move counter (two flips = one move) (initials: ___)
-- [ ] Add win detection (every pair matched) (initials: ___)
+- [X] Add flip logic: a tapped card turns face up, and only two can be face up at a time (initials: HC)
+- [X] Add match logic: a matching pair stays face up, and a mismatch flips back after a short pause (initials: HC)
+- [X] Lock taps while two cards are being compared (initials: HC)
+- [X] Add the move counter (two flips = one move) (initials: HC)
+- [X] Add win detection (every pair matched) (initials: HC)
 
 ### Phase 3: Game board screen
 
-- [ ] Lay out the card grid so it fits the screen for any grid size (initials: ___)
-- [ ] Show the three card looks: face down, face up, and matched (initials: ___)
-- [ ] Connect the board to the game logic so taps flip real cards (initials: ___)
-- [ ] Milestone: a full Medium (4 × 4) game can be played to the end (initials: ___)
+- [X] Lay out the card grid so it fits the screen for any grid size (initials: AB)
+- [X] Show the three card looks: face down, face up, and matched (initials: AB)
+- [X] Connect the board to the game logic so taps flip real cards (initials: AB)
+- [X] Milestone: a full Medium (4 × 4) game can be played to the end (initials: AB)
 
 ### Phase 4: Difficulty and navigation
 
