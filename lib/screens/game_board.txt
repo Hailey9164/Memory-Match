@@ -1,0 +1,173 @@
+import 'package:flutter/material.dart';
+
+import '../models/card_model.dart';
+import '../models/grid_size.dart';
+import '../game/deck_builder.dart';
+import '../game/memory_game.dart';
+
+// This is the main game screen where the memory game takes place
+class GameBoard extends StatefulWidget {
+  const GameBoard({super.key, required this.gridSize});
+
+// Creates state for the game board
+  @override
+  State<GameBoard> createState() {
+    return _GameBoardState();
+  }
+}
+// Stores informatin that can change while playing
+class _GameBoardState extends State<GameBoard> {
+// Selects size of the board
+  final GridSize gridSize;
+/*
+  // Stores all cards in the game
+  late List<MemoryCard> _cards;
+
+  // Stores index of first card selected
+  int? firstCardIndex;
+
+  // Tells us whetehr game is waiting before hiding
+  // two cards that don't match
+  bool checkingPair = false;
+
+  // Counts how many pairs player has attempted
+  int moves = 0;
+*/
+  // This runs once when the game board opens
+  @override
+  void initState() {
+    super.initState();
+
+    // Creates the shuffled cards
+    _cards = buildDeck(gridSize);
+  }
+
+  // Starts a new game
+  void startNewGame() {
+    setState(() {
+      // Creates new shuffled cards
+      _cards = buildDeck(gridSize);
+
+      // Removes saved first card
+      firstCardIndex = null;
+
+      // Allows player to tap cards again
+      checkingPair = false;
+
+      // Resets move counter
+      moves = 0;
+    });
+  }
+/*
+  // This runs when a card is tapped
+  Future<void> cardTapped(int index) async {
+    // Do nothing if card is already face up/matched
+    // or if game is waiting to hide cards
+    if ((checkingPair || !_cards[index].isFaceDown) || _cards[index].isMatched) {
+      return;
+    }
+
+    // Change selected card to face up
+    setState(() {
+      _cards[index] = _cards[index].flipUp();
+    });
+
+    // If this is the first card flipped, save its index
+    if (firstCardIndex == null) {
+      firstCardIndex = index;
+      return;
+    }
+
+    // Save the index of the first card flipped
+    final firstIndex = firstCardIndex!;
+
+    // Clear saved first card because two cards are now flipped
+    firstCardIndex = null;
+
+    // Add one to the move counter
+    setState(() {
+      moves++;
+    });
+
+    // Check if the two cards match
+    if (_cards[firstIndex].matches(_cards[index])) {
+      // If match, mark as matched and leave face up
+      setState(() {
+        _cards[firstIndex] = _cards[firstIndex].markMatched();
+        _cards[index] = _cards[index].markMatched();
+      });
+    } else {
+      // No match
+      // Stop player from tapping more cards while pair still visible
+      checkingPair = true;
+      return;
+    }
+
+    // Wait 800 miliseconds before flipping cards
+    await Future.delayed(const Duration(milliseconds: 800));
+
+    // Flip both cards back down
+    setState(() {
+      _cards[firstIndex] = _cards[firstIndex].flipDown();
+      _cards[index] = _cards[index].flipDown();
+
+      // Allow player to tap cards again
+      checkingPair = false;
+    });
+  }
+*/
+  // Builds the game board UI
+  @override
+  Widget build(BuildContext context) {
+    // Counts how many cards have been matched
+    final matchedCards = _cards.where((card) => card.isMatched).length;
+
+    // The game is won when all cards are matched
+    final gameWon = matchedCards == _cards.length;
+
+    return Scaffold(
+      // Creates the top bar of the screen
+      appBar: AppBar(
+        title: const Text('Memory Game'),
+
+        // Places title in center
+        centerTitle: true,
+      ),
+
+        // Card grid
+        body: gameBoard,
+
+        // Adds buttons
+        bottomNavigationBar: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                // First button restarts the game
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      startNewGame();
+                    },
+                  child: const Text('Restart'),
+                  ),
+                ),
+                const SizedBox(width: 8),
+
+                // Second button for going back to menu
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      //go to menu screen
+                      startNewGame();
+                    },
+                  child: const Text('Menu'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+      )
+    );
+  }
+}
