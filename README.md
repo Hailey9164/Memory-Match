@@ -74,10 +74,10 @@ Work top to bottom: each phase depends on the one before it. When a task is done
 
 ### Phase 4: Difficulty and navigation
 
-- [ ] Build the difficulty menu with Easy, Medium, and Hard (initials: ___)
-- [ ] Add the Easy (3 × 4) and Hard (4 × 6) grids (initials: ___)
-- [ ] Add Restart and Menu buttons to the board (initials: ___)
-- [ ] Connect navigation: menu to board, board back to menu (initials: ___)
+- [X] Build the difficulty menu with Easy, Medium, and Hard (initials: HC)
+- [X] Add the Easy (3 × 4) and Hard (4 × 6) grids (initials: HC)
+- [X] Add Restart and Menu buttons to the board (initials: HC)
+- [X] Connect navigation: menu to board, board back to menu (initials: HC)
 
 ### Phase 5: Timer, score, and win screen 
 
