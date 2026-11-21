@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'screens/game_screen.dart';
+import 'screens/menu_screen.dart';
 
 void main() {
   runApp(const MemoryMatchApp());
 }
 
-/// The root of the app. For now it opens straight to the game screen.
-/// When the menu screen exists, change `home` to point at it.
+/// The root of the app. It opens on the difficulty menu.
 class MemoryMatchApp extends StatelessWidget {
   const MemoryMatchApp({super.key});
 
@@ -16,7 +15,7 @@ class MemoryMatchApp extends StatelessWidget {
     return MaterialApp(
       title: 'Memory Match',
       debugShowCheckedModeBanner: false,
-      home: const GameScreen(),
+      home: const MenuScreen(),
     );
   }
 }

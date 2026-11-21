@@ -18,10 +18,10 @@ class MemoryGame extends ChangeNotifier {
   /// [mismatchDelay] is how long two cards that do not match stay face up
   /// before they flip back, so the player has time to see them.
   MemoryGame(
-    this.size, {
-    int? seed,
-    this.mismatchDelay = const Duration(milliseconds: 800),
-  }) : _cards = buildDeck(size, seed: seed);
+      this.size, {
+        int? seed,
+        this.mismatchDelay = const Duration(milliseconds: 800),
+      }) : _cards = buildDeck(size, seed: seed);
 
   final GridSize size;
   final Duration mismatchDelay;
@@ -92,6 +92,24 @@ class MemoryGame extends ChangeNotifier {
     }
     notifyListeners();
     return true;
+  }
+
+  /// Starts the round over on the same grid size: a new shuffled board with
+  /// every card face down, and the move count back at zero.
+  ///
+  /// It works at any point, including in the middle of a game, during the
+  /// pause after a mismatch, and after the round is won. The new board is
+  /// always a new random one, even if the game was first dealt with a seed.
+  void restart() {
+    // Stop a pending flip-back, so it cannot flip cards on the new board.
+    _mismatchTimer?.cancel();
+    _mismatchTimer = null;
+
+    _cards
+      ..clear()
+      ..addAll(buildDeck(size));
+    _moves = 0;
+    notifyListeners();
   }
 
   /// Counts the move and checks the two face-up cards. Called only when
