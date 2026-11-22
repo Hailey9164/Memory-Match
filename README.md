@@ -90,8 +90,8 @@ Work top to bottom: each phase depends on the one before it. When a task is done
 
 ### Phase 6: Core testing checkpoint 
 
-- [ ] Play through Easy, Medium, and Hard on an emulator and fix any bugs (initials: ___)
-- [ ] Try edge cases: tapping very fast, tapping the same card twice, leaving the app mid-game, rotating the phone (initials: ___)
+- [X] Play through Easy, Medium, and Hard on an emulator and fix any bugs (initials: HC)
+- [] Try edge cases: tapping very fast, tapping the same card twice, leaving the app mid-game, rotating the phone (initials: ___)
 
 ### Phase 7: Extra features 
 
