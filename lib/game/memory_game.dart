@@ -30,7 +30,14 @@ class MemoryGame extends ChangeNotifier {
   /// Set while two cards that do not match are waiting to flip back.
   Timer? _mismatchTimer;
 
+  /// Ticks once a second while the round is being played.
+  Timer? _clock;
+
+  /// True once the first card has been flipped. Stays true until [restart].
+  bool _started = false;
+
   int _moves = 0;
+  int _seconds = 0;
 
   /// Every card on the board, in board order (left to right, then top to
   /// bottom). The list cannot be changed: use [flip] to change a card.
@@ -52,6 +59,15 @@ class MemoryGame extends ChangeNotifier {
   /// it counts when the second card is flipped, whether or not they match.
   /// Taps that are ignored do not count.
   int get moves => _moves;
+
+  /// How many seconds the round has taken so far. It stays at 0 until the
+  /// first card is flipped, and stops counting when the last pair is matched.
+  /// This is the number the score will be based on.
+  int get seconds => _seconds;
+
+  /// True while the timer is counting. It is false before the first flip and
+  /// after the round is won.
+  bool get isTimerRunning => _clock != null;
 
   /// How many pairs have been matched so far. Compare it with
   /// `size.pairCount` for a progress line such as "1 of 8 pairs found".
@@ -86,9 +102,14 @@ class MemoryGame extends ChangeNotifier {
   /// when a mismatched pair flips back.
   bool flip(int id) {
     if (!canFlip(id)) return false;
+    _startClock();
     _cards[id] = _cards[id].flipUp();
     if (hasTwoFaceUp) {
       _checkPair();
+    }
+    // The last match ends the round, so the time stops here.
+    if (isWon) {
+      _stopClock();
     }
     notifyListeners();
     return true;
@@ -105,11 +126,31 @@ class MemoryGame extends ChangeNotifier {
     _mismatchTimer?.cancel();
     _mismatchTimer = null;
 
+    // The new round starts with the clock at 0, waiting for the first flip.
+    _stopClock();
+    _started = false;
+    _seconds = 0;
+
     _cards
       ..clear()
       ..addAll(buildDeck(size));
     _moves = 0;
     notifyListeners();
+  }
+
+  /// Starts the timer on the first flip of the round. Does nothing after that.
+  void _startClock() {
+    if (_started) return;
+    _started = true;
+    _clock = Timer.periodic(const Duration(seconds: 1), (_) {
+      _seconds++;
+      notifyListeners();
+    });
+  }
+
+  void _stopClock() {
+    _clock?.cancel();
+    _clock = null;
   }
 
   /// Counts the move and checks the two face-up cards. Called only when
@@ -139,6 +180,7 @@ class MemoryGame extends ChangeNotifier {
   void dispose() {
     // Stop a pending flip-back, so it cannot touch the game after it is gone.
     _mismatchTimer?.cancel();
+    _stopClock();
     super.dispose();
   }
 }
