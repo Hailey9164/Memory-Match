@@ -81,12 +81,12 @@ Work top to bottom: each phase depends on the one before it. When a task is done
 
 ### Phase 5: Timer, score, and win screen 
 
-- [ ] Add the timer: starts on the first flip and stops on the last match (initials: ___)
-- [ ] Show the time and move count at the top of the board (initials: ___)
-- [ ] Write the score formula: faster time scores higher, with a multiplier per difficulty (initials: ___)
-- [ ] Build the win screen showing time, moves, and score (initials: ___)
-- [ ] Add Play again and Change difficulty buttons to the win screen (initials: ___)
-- [ ] Milestone: a player can go from menu to board to win screen on all three levels (initials: ___)
+- [X] Add the timer: starts on the first flip and stops on the last match (initials: HC)
+- [X] Show the time and move count at the top of the board (initials: HC)
+- [X] Write the score formula: faster time scores higher, with a multiplier per difficulty (initials: HC)
+- [X] Build the win screen showing time, moves, and score (initials: HC)
+- [X] Add Play again and Change difficulty buttons to the win screen (initials: HC)
+- [X] Milestone: a player can go from menu to board to win screen on all three levels (initials: HC)
 
 ### Phase 6: Core testing checkpoint 
 
