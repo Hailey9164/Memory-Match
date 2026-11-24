@@ -8,6 +8,7 @@ import '../utils/board_layout.dart';
 import '../widgets/memory_card.dart';
 import '../widgets/stats_bar.dart';
 import 'win_screen.dart';
+import 'pause_screen.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({super.key, this.gridSize = GridSize.medium});
@@ -171,7 +172,7 @@ class _GameScreenState extends State<GameScreen> {
             ),
           ),
 
-          // The two buttons under the board.
+          // The three buttons under the board.
           bottomNavigationBar: SafeArea(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
@@ -189,6 +190,28 @@ class _GameScreenState extends State<GameScreen> {
                   ),
 
                   const SizedBox(width: 12),
+
+                  // Pause stops the timer and disables cards from being flipped
+                  Expanded(
+                    child: FilledButton(
+                      onPressed: () {
+                        game.pause();
+
+                         // Open PauseScreen using the same game object.
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => PauseScreen(game: game),
+                          ),
+                        );
+                      },
+                      style: FilledButton.styleFrom(
+                        minimumSize: const Size.fromHeight(48),
+                      ),
+                      child: const Text('Pause'),
+                    ),
+                  ),
+
+                  const SizedBox(width:12),
 
                   // Menu goes back to the difficulty screen.
                   Expanded(
