@@ -36,6 +36,8 @@ class MemoryGame extends ChangeNotifier {
   /// True once the first card has been flipped. Stays true until [restart].
   bool _started = false;
 
+  bool _isPaused = false;
+
   int _moves = 0;
   int _seconds = 0;
 
@@ -77,6 +79,10 @@ class MemoryGame extends ChangeNotifier {
   /// stop the timer and show the win screen.
   bool get isWon => _cards.every((card) => card.isMatched);
 
+
+  // Checks whether the game is paused
+  bool get isPaused => _isPaused;
+
   /// Whether a tap on the card with this [id] should flip it.
   ///
   /// A card can be flipped only when all of these are true:
@@ -87,7 +93,7 @@ class MemoryGame extends ChangeNotifier {
   ///
   /// When the round is won, every card is matched, so nothing can be flipped.
   bool canFlip(int id) =>
-      id >= 0 && id < _cards.length && !hasTwoFaceUp && _cards[id].isFaceDown;
+      !_isPaused && id >= 0 && id < _cards.length && !hasTwoFaceUp && _cards[id].isFaceDown;
 
   /// Flips the card with this [id] face up, if [canFlip] allows it.
   ///
@@ -140,7 +146,7 @@ class MemoryGame extends ChangeNotifier {
 
   /// Starts the timer on the first flip of the round. Does nothing after that.
   void _startClock() {
-    if (_started) return;
+    if (_clock != null) return;
     _started = true;
     _clock = Timer.periodic(const Duration(seconds: 1), (_) {
       _seconds++;
@@ -182,5 +188,29 @@ class MemoryGame extends ChangeNotifier {
     _mismatchTimer?.cancel();
     _stopClock();
     super.dispose();
+  }
+
+  // Pauses the timer
+  void pause() {
+    _isPaused = true;
+    // Stops the timer
+    _stopClock();
+    _mismatchTimer?.cancel();
+
+    // Flips non-matched cards back down
+    // a bug was found where the cards would stay up if 
+    // paused before the mismatch timer was done
+    if (hasTwoFaceUp) {
+      _flipMismatchBack();
+    }
+    notifyListeners();
+  }
+
+  // Resumes the timer
+  void resume() {
+    _isPaused = false;
+    // Continues the timer
+    _startClock();
+    notifyListeners();
   }
 }
