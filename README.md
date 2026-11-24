@@ -95,7 +95,7 @@ Work top to bottom: each phase depends on the one before it. When a task is done
 
 ### Phase 7: Extra features 
 
-- [ ] Add a pause button that also pauses the timer (initials: ___)
+- [X] Add a pause button that also pauses the timer (initials: AB)
 - [ ] Add selectable card themes (animals, shapes, colors) with a way to choose one (initials: ___)
 - [ ] Save the best time and fewest moves for each difficulty on the device, and show them in the menu or on the win screen (initials: ___)
 
